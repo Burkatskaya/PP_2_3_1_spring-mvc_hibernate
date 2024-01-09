@@ -5,6 +5,11 @@
 bin/
 .settings/
 
+src/main/webapp/conf/
+src/main/webapp/logs/
+src/main/webapp/work/
+
+
 # Eclipse files
 .project
 .classpath
