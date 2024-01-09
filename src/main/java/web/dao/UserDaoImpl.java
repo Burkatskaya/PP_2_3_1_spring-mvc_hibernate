@@ -18,11 +18,11 @@ public class UserDaoImpl implements UserDao {
     {
         users = new ArrayList<>();
 
-        users.add(new User(++USERS_COUNT, "Model1", "111"));
-        users.add(new User(++USERS_COUNT, "Model2", "222"));
-        users.add(new User(++USERS_COUNT, "Model3", "333"));
-        users.add(new User(++USERS_COUNT, "Model4", "444"));
-        users.add(new User(++USERS_COUNT, "Model5", "555"));
+        users.add(new User(++USERS_COUNT, "Name1", "Lastname1"));
+        users.add(new User(++USERS_COUNT, "Name2", "Lastname2"));
+        users.add(new User(++USERS_COUNT, "Name3", "Lastname3"));
+        users.add(new User(++USERS_COUNT, "Name4", "Lastname4"));
+        users.add(new User(++USERS_COUNT, "Name5", "Lastname5"));
     }
 
     @Override
