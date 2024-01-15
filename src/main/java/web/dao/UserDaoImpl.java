@@ -31,12 +31,35 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User show(int id) {
+        return users.stream().filter(user -> user.getId() == id).findAny().orElse(null);
+    }
+
+    @Override
     public List<User> listUsersByCount(int count) {
-        return count > 0 && count < 5
+        return count > 0 && count < 100
                 ? IntStream.range(0, users.size())
                 .limit(count)
                 .mapToObj(users::get)
                 .collect(Collectors.toList())
                 : users;
+    }
+
+    @Override
+    public void save(User user) {
+        user.setId(++USERS_COUNT);
+        users.add(user);
+    }
+
+    @Override
+    public void update(int id, User updateUser) {
+        User userToBeUpdated = show(id);
+        userToBeUpdated.setName(updateUser.getName());
+        userToBeUpdated.setLastname(updateUser.getLastname());
+    }
+
+    @Override
+    public void delete(int id) {
+        users.removeIf(u -> u.getId() == id);
     }
 }
