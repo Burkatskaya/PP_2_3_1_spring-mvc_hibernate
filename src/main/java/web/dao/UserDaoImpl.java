@@ -2,7 +2,6 @@ package web.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Component;
 
 import web.model.User;
@@ -21,9 +20,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User show(int id) {
-        TypedQuery<User> typedQuery = entityManager.createQuery("select u from User u where u.id = :id", User.class);
-        typedQuery.setParameter("id", id);
-        return typedQuery.getResultList().stream().findAny().orElse(null);
+        return entityManager.find(User.class, id);
     }
 
     @Override
@@ -38,8 +35,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void delete(int id) {
-        User user = entityManager.createQuery("select u from User u where u.id = :id", User.class)
-                .setParameter("id", id).getSingleResult();
-        entityManager.remove(user);
+        entityManager.remove(show(id));
     }
 }
