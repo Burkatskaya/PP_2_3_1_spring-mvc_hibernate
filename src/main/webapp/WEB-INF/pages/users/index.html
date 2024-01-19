@@ -23,7 +23,6 @@
         <td th:text="${user.name}"/>
         <td th:text="${user.lastname}"/>
         <td>
-<!--            <a th:href="@{/users/{id}(id=${user.getId()})}">Edit/Delete</a>-->
             <a th:href="'users/edit?id='+${user.id}">Edit</a>
             <a th:href="'users/delete?id='+${user.id}">Delete</a>
         </td>
