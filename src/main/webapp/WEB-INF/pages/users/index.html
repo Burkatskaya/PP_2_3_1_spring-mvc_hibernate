@@ -23,7 +23,9 @@
         <td th:text="${user.name}"/>
         <td th:text="${user.lastname}"/>
         <td>
-            <a th:href="@{/users/{id}(id=${user.getId()})}">Edit/Delete</a>
+<!--            <a th:href="@{/users/{id}(id=${user.getId()})}">Edit/Delete</a>-->
+            <a th:href="'users/edit?id='+${user.id}">Edit</a>
+            <a th:href="'users/delete?id='+${user.id}">Delete</a>
         </td>
     </tr>
     </tbody>
@@ -31,7 +33,9 @@
 
 <br/>
 
-<a href="/users/new">Create new user</a>
+<form th:method="GET" th:action="@{/users/new}">
+    <input type="submit" value="Create new user"/>
+</form>
 
 </body>
 </html>

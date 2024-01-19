@@ -10,10 +10,19 @@
 <p th:text="${user.getName()}">VALUE</p>
 <p th:text="${user.getLastname()}">VALUE</p>
 
-<a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
+<!--<form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}">-->
+<!--    <input type="submit" value="Edit"/>-->
+<!--</form>-->
 
-<form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
-    <input type="submit" value="Delete"/>
-</form>
+<!--<br/>-->
+
+<!--<form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">-->
+<!--    <input type="submit" value="Delete"/>-->
+<!--</form>-->
+<td>
+    <a th:href="'edit?id='+${user.id}">Edit</a>
+    <a th:href="'delete?id='+${user.id}">Delete</a>
+</td>
+
 </body>
 </html>
