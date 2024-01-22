@@ -11,7 +11,7 @@ import web.model.User;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
@@ -30,16 +30,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void save(User user) {
         userDao.save(user);
     }
 
     @Override
+    @Transactional
     public void update(User updateUser) {
         userDao.update(updateUser);
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         userDao.delete(id);
     }
